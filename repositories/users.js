@@ -15,7 +15,6 @@ const getUser = async id => {
 
 const updateUser = async (id, user) => {
     const response = await User.update(user, { where: { id: id } });
-    console.log(response, "here");
     return response;
 };
 

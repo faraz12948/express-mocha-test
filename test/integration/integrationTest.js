@@ -1,7 +1,7 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
-const app = require('../index');
-const repo = require('../repositories/users')
+const app = require('../../index');
+const repo = require('../../repositories/users')
 chai.use(chaiHttp);
 chai.should();
 
@@ -30,7 +30,6 @@ describe('Records', () => {
             name: 'Test Record',
             email: 'record@gmail.com',
         });
-        console.log(response.dataValues.id, "here")
         const res = await chai.request(app).get(`/users/${response.dataValues.id}`);
 
         res.should.have.status(200);
@@ -73,7 +72,6 @@ describe('Records', () => {
             email: 'update@gmail.com',
         });
         const res = await chai.request(app).delete(`/users/${response.id}`);
-        console.log(res.body)
         res.should.have.status(200);
         res.body.should.be.a('object');
         res.body.should.have.property('message').eql('User deleted successfully');
