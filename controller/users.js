@@ -21,10 +21,17 @@ const getUsers = async (req, res) => {
 const getUser = async (req, res) => {
     const { id } = req.params;
     const user = await UserService.getUser(id);
-    res.status(200).json({
-        message: 'User retrieved successfully',
-        data: user
-    });
+    if (user !== null) {
+        res.status(200).json({
+            message: 'User retrieved successfully',
+            data: user
+        });
+    } else {
+        res.status(404).json({
+            message: 'User not found',
+
+        });
+    }
 };
 
 const updateUser = async (req, res) => {

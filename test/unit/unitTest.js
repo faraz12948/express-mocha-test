@@ -34,7 +34,7 @@ describe('Records', () => {
         res.dataValues.should.have.property('name').eql('Test Record');
         res.dataValues.should.have.property('email').eql('record@gmail.com');
     });
-    it('should retrieve a record', async () => {
+    it('should update a record', async () => {
         const response = await repo.createUser({
             name: 'Test Record',
             email: 'record@gmail.com',
@@ -69,4 +69,7 @@ describe('Records', () => {
 
     });
 });
+
+
+
 
